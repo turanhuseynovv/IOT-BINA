@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════
+   THEME VARIABLES
+   ══════════════════════════════════════════════ */
+
+/* ── Dark Theme (default) ── */
+:root,
+:root[data-theme="dark"],
+.theme-dark {
+  --bg-primary: #0A0A0F;
+  --bg-card: #111118;
+  --bg-card-alt: #1A1A24;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --accent: #4F8EF7;
+  --accent-hover: #3B7AE0;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --scrollbar-track: #0A0A0F;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.12);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.2);
+  --focus-ring: #4F8EF7;
+  --input-bg: #1A1A24;
+  --input-border: rgba(255, 255, 255, 0.08);
+  --input-text: #F8FAFC;
+  --input-placeholder: #64748B;
+  --tooltip-bg: #111118;
+  --tooltip-border: rgba(255, 255, 255, 0.08);
+  --chart-bg-past: #1A1A24;
+  --chart-stroke-bg: #1A1A24;
+  --modal-overlay: rgba(0, 0, 0, 0.6);
+}
+
+/* ── Light Theme (Google Style) ── */
+:root[data-theme="light"],
+.theme-light {
+  --bg-primary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #F8F9FA;
+  --border-subtle: #E8EAED;
+  --text-primary: #202124;
+  --text-secondary: #5F6368;
+  --accent: #1A73E8;
+  --accent-hover: #1557B0;
+  --success: #1E8E3E;
+  --warning: #F9AB00;
+  --danger: #D93025;
+  --grid-line: #F1F3F4;
+  --scrollbar-track: #FFFFFF;
+  --scrollbar-thumb: #DADCE0;
+  --scrollbar-thumb-hover: #BDC1C6;
+  --focus-ring: #1A73E8;
+  --input-bg: #FFFFFF;
+  --input-border: #DADCE0;
+  --input-text: #202124;
+  --input-placeholder: #80868B;
+  --tooltip-bg: #202124;
+  --tooltip-border: #3C4043;
+  --chart-bg-past: #F1F3F4;
+  --chart-stroke-bg: #E8EAED;
+  --modal-overlay: rgba(32, 33, 36, 0.4);
+}
+
+/* ── Nature Theme (Pronounced Green & Crisp White) ── */
+:root[data-theme="nature"],
+.theme-nature {
+  --bg-primary: #F4FBF4;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #E6F4EA;
+  --border-subtle: #CEEAD6;
+  --text-primary: #0D3C26;
+  --text-secondary: #137333;
+  --accent: #1E8E3E;
+  --accent-hover: #137333;
+  --success: #188038;
+  --warning: #E37400;
+  --danger: #D93025;
+  --grid-line: #CEEAD6;
+  --scrollbar-track: #F4FBF4;
+  --scrollbar-thumb: #A8DAB5;
+  --scrollbar-thumb-hover: #81C995;
+  --focus-ring: #1E8E3E;
+  --input-bg: #FFFFFF;
+  --input-border: #A8DAB5;
+  --input-text: #0D3C26;
+  --input-placeholder: #5BB974;
+  --tooltip-bg: #0D3C26;
+  --tooltip-border: #137333;
+  --chart-bg-past: #CEEAD6;
+  --chart-stroke-bg: #A8DAB5;
+  --modal-overlay: rgba(13, 60, 38, 0.3);
+}
+
+
+/* ══════════════════════════════════════════════
+   GLOBAL RESET
+   ══════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* ══════════════════════════════════════════════
+   SCROLLBAR
+   ══════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+
+/* ══════════════════════════════════════════════
+   FOCUS RING
+   ══════════════════════════════════════════════ */
+*:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+
+/* ══════════════════════════════════════════════
+   INPUT BASE STYLES
+   ══════════════════════════════════════════════ */
+input,
+textarea,
+select {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  transition: border-color 150ms ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--input-placeholder);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Fix date input and select option color in light themes */
+.theme-light select option,
+.theme-nature select option {
+  background-color: #FFFFFF;
+  color: #0F172A;
+}
+
+
+/* ══════════════════════════════════════════════
+   BUTTON BASE
+   ══════════════════════════════════════════════ */
+button {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+
+/* ══════════════════════════════════════════════
+   TABLE RESET
+   ══════════════════════════════════════════════ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+/* ══════════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════════ */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 200ms ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 150ms ease-out;
+}
+
+
+/* ══════════════════════════════════════════════
+   THEME TRANSITION on key elements
+   ══════════════════════════════════════════════ */
+.theme-transition,
+aside,
+header,
+main,
+.bg-bg-card,
+.bg-bg-card-alt,
+.bg-bg-primary {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* ══════════════════════════════════════════════
+   RECHARTS TOOLTIP OVERRIDE (for light/nature themes)
+   ══════════════════════════════════════════════ */
+.theme-light .recharts-default-tooltip,
+.theme-nature .recharts-default-tooltip {
+  background-color: var(--tooltip-bg) !important;
+  border-color: var(--tooltip-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.theme-light .recharts-legend-item-text,
+.theme-nature .recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+
+/* ══════════════════════════════════════════════
+   PRINT STYLES
+   ══════════════════════════════════════════════ */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
